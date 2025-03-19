@@ -1,9 +1,9 @@
 #src/config.py
+#example config file template
 
 import os
 from dotenv import load_dotenv
 
-# โหลดตัวแปรจาก .env
 load_dotenv()
 
 DB_CONFIG = {
@@ -14,12 +14,6 @@ DB_CONFIG = {
     'db_name': os.getenv('DB_NAME', 'default_db')
 }
 
-API_CONFIG = {
-    'url': os.getenv('API_URL', 'https://api.example.com/data'),
-    'headers': {'Authorization': f"Bearer {os.getenv('API_KEY', 'default_api_key')}"}
-}
-
 def get_db_uri():
-    """สร้าง PostgreSQL Database URI"""
     return f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['db_name']}"
 
